@@ -2,9 +2,9 @@ package lesson1;
 
 public class Book {
 
-    String nameBook;
-    Author author;
-    int yearPublication;
+    private String nameBook;
+    private Author author;
+    private int yearPublication;
 
     public Book(String nameBook, Author author, int publicationYear) {
         this.nameBook = nameBook;
@@ -13,7 +13,6 @@ public class Book {
     }
 
     public Book() {
-
     }
 
     public Author getAuthor() {
