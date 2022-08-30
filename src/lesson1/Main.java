@@ -1,38 +1,41 @@
 package lesson1;
 
-import java.util.Objects;
+import java.util.stream.Stream;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Author author1 = new Author("Лев", "Толстой");
-        Book book1 = new Book("Война и мир", author1, 1865);
-        System.out.println("book1 = " + book1);
+        System.out.println("Authors:");
+        Author stephenKing = new Author("Stephen", "King");
+        Author stephenKing2 = new Author("Stephen", "King");
+        Author levTolstoy = new Author("Lev", "Tolstoy");
+        System.out.println("Author copies equal: " + stephenKing.equals(stephenKing2));
+        System.out.println("Author copies equal by hashCode: " + (stephenKing.hashCode() == stephenKing2.hashCode()));
+        System.out.println("Authors equal: " + stephenKing.equals(levTolstoy));
+        System.out.println("Authors equal by hashCode: " + (stephenKing.hashCode() == levTolstoy.hashCode()));
 
-        Author author2 = new Author("Вениамин", "Каверин");
-        Book book2 = new Book("Два капитана", author2, 1945);
-        System.out.println("book2 = " + book2);
+        System.out.println(stephenKing);
+        System.out.println(levTolstoy);
 
-        book2.setYearPublication(1938);
+        System.out.println("==============================");
 
-        System.out.println("book2 = " + book2);
-        System.out.println();
+        System.out.println("Books:");
+        Book theStand = new Book("The Stand", stephenKing, 1976);
+        Book theStand2 = new Book("The Stand", stephenKing, 1976);
+        Book warAndPeace = new Book("War and Peace", levTolstoy, 1869);
+        System.out.println("Book copies equal: " + theStand.equals(theStand2));
+        System.out.println("Book copies equal by hashCode: " + (theStand.hashCode() == theStand2.hashCode()));
+        System.out.println("Books equal: " + theStand.equals(warAndPeace));
+        System.out.println("Books equal by hashCode: " + (theStand.hashCode() == warAndPeace.hashCode()));
+        System.out.println(theStand);
+        System.out.println(warAndPeace);
 
-        Book[] books = new Book[5];
-        books[0] =book1;
-        addBook(books, book2);
-        System.out.println(books[1]);
+        System.out.println("==============================");
 
-    }
-
-    public static void addBook(Book[] books, Book newBook) {
-        for (int i = 0; i < books.length - 1; i++) {
-            if (books[i] == null) {
-                books[i] = newBook;
-                break;
-            }
-            System.out.println(books[i]);
-        }
+        Library library = new Library(2);
+        library.addBook(theStand);
+        library.addBook(warAndPeace);
+        System.out.println(library);
     }
 }
